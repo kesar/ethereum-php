@@ -1,0 +1,8 @@
+{
+    "require": {
+        "graze/guzzle-jsonrpc": "^3.2"
+    },
+    "autoload": {
+        "psr-4": {"": "src/"}
+    }
+}

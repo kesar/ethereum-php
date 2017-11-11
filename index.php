@@ -1,15 +1,31 @@
 <?php
 
 use EthereumPHP\EthereumClient;
-use EthereumPHP\Types\BlockHash;
 use EthereumPHP\Types\BlockNumber;
 
 include 'vendor/autoload.php';
 
-$randomAddress = new \EthereumPHP\Types\Address('0x7eff122b94897ea5b0e2a9abf47b86337fafebdc');
-$randomHash = '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238';
+$myAddress = new \EthereumPHP\Types\Address('0x2e94757df1267f244f4b9ef049416c6794a60552');
+$otherAddress = new \EthereumPHP\Types\Address('0x22c5071a37432ac845a57c4a69339d161b6baa22');
 
 $client = new EthereumClient('http://localhost:8545');
+
+echo 'My address: '. $client->eth()->getBalance($myAddress, new BlockNumber())->toEther()."\n";
+echo 'Other address: '. $client->eth()->getBalance($otherAddress, new BlockNumber())->toEther()."\n";
+echo 'Unlocking my account: '. $client->personal()->unlockAccount($myAddress, 'test', 20)."\n";
+
+$transaction = new \EthereumPHP\Types\Transaction(
+    $myAddress,
+    $otherAddress,
+    null,
+    null,
+    null,
+    (new \EthereumPHP\Types\Ether(5))->toWei()->amount()
+);
+echo 'Sending transaction tx: '. $client->eth()->sendTransaction($transaction)->toString();
+
+
+/*
 echo $client->net()->version()."\n";
 echo $client->net()->listening()."\n";
 echo $client->net()->peerCount()."\n";
@@ -47,3 +63,4 @@ foreach ($client->personal()->listAccounts() as $account) {
 $account = $client->personal()->newAccount('test');
 echo $account->toString()."\n";
 echo $client->personal()->unlockAccount($account, 'test', 20)."\n";
+*/

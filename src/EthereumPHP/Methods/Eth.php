@@ -43,7 +43,7 @@ class Eth extends AbstractMethods
             $this->client->request(64, 'eth_coinbase', [])
         );
 
-        return ($response->getRpcResult()) ? new Address($response->getRpcResult()): null;
+        return ($response->getRpcResult()) ? new Address($response->getRpcResult()) : null;
     }
 
     public function mining(): bool
@@ -105,6 +105,7 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBalance', [$address->toString(), $blockNumber->toString()])
         );
+
         return new Wei(hexdec($response->getRpcResult()));
 
     }
@@ -257,7 +258,7 @@ class Eth extends AbstractMethods
     public function getTransactionByBlockHashAndIndex(BlockHash $hash, int $index): ?TransactionInfo
     {
         $response = $this->client->send(
-            $this->client->request(1, 'eth_getTransactionByBlockHashAndIndex', [$hash->toString(), dechex($index)])
+            $this->client->request(1, 'eth_getTransactionByBlockHashAndIndex', [$hash->toString(), '0x'.dechex($index)])
         );
 
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;
@@ -267,7 +268,7 @@ class Eth extends AbstractMethods
     {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getTransactionByBlockNumberAndIndex',
-                [$blockNumber->toString(), dechex($index)])
+                [$blockNumber->toString(), '0x'.dechex($index)])
         );
 
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;

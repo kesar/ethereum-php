@@ -22,7 +22,7 @@ class TransactionInfo
     public function __construct($response)
     {
         $this->blockHash = new BlockHash($response['blockHash']);
-        $this->blockNumber = hexdec($response['blockHash']);
+        $this->blockNumber = hexdec($response['blockNumber']);
         $this->from = new Address($response['from']);
         $this->to = new Address($response['to']);
         $this->gas = new Wei(hexdec($response['gas']));

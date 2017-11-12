@@ -1,8 +1,18 @@
 {
+    "name": "kesar/ethereum-php",
+    "description": "Ethereum client library in PHP",
     "require": {
+        "php": ">=7",
         "graze/guzzle-jsonrpc": "^3.2"
     },
     "autoload": {
         "psr-4": {"": "src/"}
-    }
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cesar Rodriguez",
+            "email": "cesar@lighstreams.io"
+        }
+    ]
 }

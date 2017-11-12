@@ -236,7 +236,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getBlockByNumber(BlockNumber $blockNumber, bool $expandTransactions): ?Block
+    public function getBlockByNumber(BlockNumber $blockNumber, bool $expandTransactions = false): ?Block
     {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBlockByNumber', [$blockNumber->toString(), $expandTransactions])

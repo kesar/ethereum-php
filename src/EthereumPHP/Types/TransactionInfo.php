@@ -27,13 +27,13 @@ class TransactionInfo
         if ($response['to']) {
             $this->to = new Address($response['to']);
         }
-        $this->gas = new Wei(hexdec($response['gas']));
-        $this->gasPrice = hexdec($response['gasPrice']);
+        $this->gas = hexdec($response['gas']);
+        $this->gasPrice = new Wei(hexdec($response['gasPrice']));
         $this->hash = new TransactionHash($response['hash']);
         $this->input = $response['input'];
-        $this->nonce = $response['nonce'];
+        $this->nonce = hexdec($response['nonce']);
         $this->transactionIndex = hexdec($response['transactionIndex']);
-        $this->value = hexdec($response['value']);
+        $this->value = new Wei(hexdec($response['value']));
         $this->v = $response['v'];
         $this->r = $response['r'];
         $this->s = $response['s'];
@@ -59,12 +59,12 @@ class TransactionInfo
         return $this->to;
     }
 
-    public function gas(): Wei
+    public function gas(): int
     {
         return $this->gas;
     }
 
-    public function gasPrice(): int
+    public function gasPrice(): Wei
     {
         return $this->gasPrice;
     }
@@ -79,7 +79,7 @@ class TransactionInfo
         return $this->input;
     }
 
-    public function nonce(): string
+    public function nonce(): int
     {
         return $this->nonce;
     }
@@ -89,7 +89,7 @@ class TransactionInfo
         return $this->transactionIndex;
     }
 
-    public function value(): int
+    public function value(): Wei
     {
         return $this->value;
     }

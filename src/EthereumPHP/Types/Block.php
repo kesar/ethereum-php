@@ -28,7 +28,7 @@ class Block
     public function __construct($response)
     {
         $this->difficulty = hexdec($response['difficulty']);
-        $this->extraData = hexdec($response['extraData']);
+        $this->extraData = $response['extraData'];
         $this->gasLimit = hexdec($response['gasLimit']);
         $this->gasUsed = new Wei(hexdec($response['gasUsed']));
         $this->hash = new BlockHash($response['hash']);
@@ -55,17 +55,17 @@ class Block
         }
     }
 
-    public function difficulty(): number
+    public function difficulty(): int
     {
         return $this->difficulty;
     }
 
-    public function extraData(): number
+    public function extraData(): string
     {
         return $this->extraData;
     }
 
-    public function gasLimit(): number
+    public function gasLimit(): int
     {
         return $this->gasLimit;
     }
@@ -100,7 +100,7 @@ class Block
         return $this->nonce;
     }
 
-    public function number(): number
+    public function number(): int
     {
         return $this->number;
     }
@@ -120,7 +120,7 @@ class Block
         return $this->sha3Uncles;
     }
 
-    public function size(): number
+    public function size(): int
     {
         return $this->size;
     }
@@ -130,12 +130,12 @@ class Block
         return $this->stateRoot;
     }
 
-    public function timestamp(): number
+    public function timestamp(): int
     {
         return $this->timestamp;
     }
 
-    public function totalDifficulty(): number
+    public function totalDifficulty(): int
     {
         return $this->totalDifficulty;
     }

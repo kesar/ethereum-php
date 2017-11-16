@@ -135,7 +135,7 @@ class Block
         return $this->timestamp;
     }
 
-    public function totalDifficulty(): int
+    public function totalDifficulty(): float
     {
         return $this->totalDifficulty;
     }

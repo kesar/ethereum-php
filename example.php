@@ -10,6 +10,24 @@ $otherAddress = new \EthereumPHP\Types\Address('0x22c5071a37432ac845a57c4a69339d
 
 $client = new EthereumClient('http://localhost:8545');
 
+$ether = new \EthereumPHP\Types\Ether(1);
+$ether2 = new \EthereumPHP\Types\Ether(1);
+echo $ether->toWei()->amount() - $ether2->toWei()->amount();
+/*
+$lastBlock = $client->eth()->blockNumber();
+for ($i = 0; $i <= $lastBlock; $i++) {
+    echo 'checking block: '.$i."\n";
+    $block = $client->eth()->getBlockByNumber(new \EthereumPHP\Types\BlockNumber($i));
+    if (count($block->transactions()) > 0) {
+        foreach ($block->transactions() as $transaction) {
+            echo $transaction."\n";
+        }
+    }
+}
+*/
+//$transaction = $client->eth()->getTransactionByHash(new \EthereumPHP\Types\TransactionHash('0xba045379c4bae068f56ae656d8f54ad53d303588307bd272a969d7479794a61a'));
+//print_r($transaction);
+/*
 echo 'My address: '. $client->eth()->getBalance($myAddress, new BlockNumber())->toEther()."\n";
 echo 'Other address: '. $client->eth()->getBalance($otherAddress, new BlockNumber())->toEther()."\n";
 echo 'Unlocking my account: '. $client->personal()->unlockAccount($myAddress, 'test', 20)."\n";
@@ -23,7 +41,7 @@ $transaction = new \EthereumPHP\Types\Transaction(
     (new \EthereumPHP\Types\Ether(5))->toWei()->amount()
 );
 echo 'Sending transaction tx: '. $client->eth()->sendTransaction($transaction)->toString();
-
+*/
 
 /*
 echo $client->net()->version()."\n";

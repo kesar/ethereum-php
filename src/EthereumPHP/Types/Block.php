@@ -25,7 +25,7 @@ class Block
     private $transactions;
     private $uncles;
 
-    public function __construct($response)
+    public function __construct(array $response)
     {
         $this->difficulty = hexdec($response['difficulty']);
         $this->extraData = $response['extraData'];

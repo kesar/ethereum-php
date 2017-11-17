@@ -19,7 +19,7 @@ class TransactionInfo
     private $r;
     private $s;
 
-    public function __construct($response)
+    public function __construct(array $response)
     {
         $this->blockHash = new BlockHash($response['blockHash']);
         $this->blockNumber = hexdec($response['blockNumber']);

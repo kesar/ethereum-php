@@ -226,7 +226,7 @@ class Eth extends AbstractMethods
 
     }
 
-    public function getBlockByHash(BlockHash $hash, bool $expandTransactions): ?Block
+    public function getBlockByHash(BlockHash $hash, bool $expandTransactions = false): ?Block
     {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBlockByHash', [$hash->toString(), $expandTransactions])

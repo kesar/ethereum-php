@@ -55,7 +55,7 @@ class Block
         }
     }
 
-    public function difficulty(): int
+    public function difficulty(): float
     {
         return $this->difficulty;
     }

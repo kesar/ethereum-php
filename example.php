@@ -1,7 +1,6 @@
 <?php
 
 use EthereumPHP\EthereumClient;
-use EthereumPHP\Types\BlockNumber;
 
 include 'vendor/autoload.php';
 

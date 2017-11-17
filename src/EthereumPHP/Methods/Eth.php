@@ -210,7 +210,7 @@ class Eth extends AbstractMethods
     public function call(Transaction $transaction, BlockNumber $blockNumber): string
     {
         $response = $this->client->send(
-            $this->client->request(1, 'eth_sendRawTransaction', [$transaction->toArray(), $blockNumber->toString()])
+            $this->client->request(1, 'eth_call', [$transaction->toArray(), $blockNumber->toString()])
         );
 
         return $response->getRpcResult();

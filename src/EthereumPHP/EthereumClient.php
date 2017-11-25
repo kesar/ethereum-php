@@ -46,7 +46,7 @@ class EthereumClient
         return $this->methods['eth'];
     }
 
-    public function Personal(): Personal
+    public function personal(): Personal
     {
         return $this->methods['personal'];
     }

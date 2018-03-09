@@ -42,8 +42,8 @@ class Personal extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(67, 'personal_unlockAccount', [$address->toString(), $password, $duration])
         );
-
-        return $response->getRpcResult();
+        $result = $response->getRpcResult();
+        return empty($result) ? false : true;
     }
 
     public function sendTransaction(Transaction $transaction, string $password): TransactionHash

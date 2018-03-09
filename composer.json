@@ -2,7 +2,7 @@
     "name": "kesar/ethereum-php",
     "description": "Ethereum client library in PHP",
     "require": {
-        "php": ">=7",
+        "php": ">=7.1",
         "graze/guzzle-jsonrpc": "^3.2"
     },
     "autoload": {

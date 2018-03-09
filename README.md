@@ -16,48 +16,48 @@ $randomHash = '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce56823
 $client = new EthereumClient('http://localhost:8545');
 
 // net
-echo $client->net()->version()."\n";
-echo $client->net()->listening()."\n";
-echo $client->net()->peerCount()."\n";
+echo $client->net()->version() , PHP_EOL;
+echo $client->net()->listening() , PHP_EOL;
+echo $client->net()->peerCount() , PHP_EOL;
 
 
 // web3
-echo $client->web3()->clientVersion()."\n";
-echo $client->web3()->sha3('0x68656c6c6f20776f726c64')."\n";
-echo $client->eth()->protocolVersion()."\n";
-echo $client->eth()->syncing()."\n";
+echo $client->web3()->clientVersion() , PHP_EOL;
+echo $client->web3()->sha3('0x68656c6c6f20776f726c64') , PHP_EOL;
+echo $client->eth()->protocolVersion() , PHP_EOL;
+echo $client->eth()->syncing() , PHP_EOL;
 
 // eth
 $coinbase = $client->eth()->coinbase();
 if ($coinbase) {
-    echo $coinbase->toString()."\n";
+    echo $coinbase->toString() , PHP_EOL;
 }
-echo $client->eth()->mining()."\n";
-echo $client->eth()->hashRate()."\n";
-echo $client->eth()->gasPrice()->toEther()."\n";
+echo $client->eth()->mining() , PHP_EOL;
+echo $client->eth()->hashRate() , PHP_EOL;
+echo $client->eth()->gasPrice()->toEther() , PHP_EOL;
 foreach ($client->eth()->accounts() as $account) {
-    echo $account->toString()."\n";
+    echo $account->toString() , PHP_EOL;
 }
 
-echo $client->eth()->blockNumber()."\n";
-echo $client->eth()->getBalance($randomAddress, new BlockNumber())->toEther()."\n";
-echo $client->eth()->getTransactionCount($randomAddress, new BlockNumber())."\n";
-echo $client->eth()->getBlockTransactionCountByHash(new BlockHash($randomHash))."\n";
-echo $client->eth()->getUncleCountByBlockHash(new BlockHash($randomHash))."\n";
-echo $client->eth()->getUncleCountByBlockNumber(new BlockNumber())."\n";
-echo $client->eth()->getCode($randomAddress, new BlockNumber())."\n";
-echo $client->eth()->sign($randomAddress, '0xdeadbeaf')."\n";
+echo $client->eth()->blockNumber() , PHP_EOL;
+echo $client->eth()->getBalance($randomAddress, new BlockNumber())->toEther() , PHP_EOL;
+echo $client->eth()->getTransactionCount($randomAddress, new BlockNumber()) , PHP_EOL;
+echo $client->eth()->getBlockTransactionCountByHash(new BlockHash($randomHash)) , PHP_EOL;
+echo $client->eth()->getUncleCountByBlockHash(new BlockHash($randomHash)) , PHP_EOL;
+echo $client->eth()->getUncleCountByBlockNumber(new BlockNumber()) , PHP_EOL;
+echo $client->eth()->getCode($randomAddress, new BlockNumber()) , PHP_EOL;
+echo $client->eth()->sign($randomAddress, '0xdeadbeaf') , PHP_EOL;
 foreach ($client->eth()->getCompilers() as $compiler) {
-    echo $compiler."\n";
+    echo $compiler , PHP_EOL;
 }
 print_r($client->eth()->compileSolidity('contract test { function multiply(uint a) returns(uint d) {   return a * 7;   } }"'));
 
 
 // management: personal
 foreach ($client->personal()->listAccounts() as $account) {
-    echo $account->toString()."\n";
+    echo $account->toString() , PHP_EOL;
 }
 $account = $client->personal()->newAccount('test');
-echo $account->toString()."\n";
-echo $client->personal()->unlockAccount($account, 'test', 20)."\n";
+echo $account->toString() , PHP_EOL;
+echo $client->personal()->unlockAccount($account, 'test', 20) , PHP_EOL;
 ```

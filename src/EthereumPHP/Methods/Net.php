@@ -25,7 +25,7 @@ class Net extends AbstractMethods
     public function peerCount(): int
     {
         $response = $this->client->send(
-            $this->client->request(67, 'net_listening', [])
+            $this->client->request(67, 'net_peerCount', [])
         );
 
         return hexdec($response->getRpcResult());

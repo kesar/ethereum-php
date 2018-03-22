@@ -1,5 +1,5 @@
 {
-    "name": "kesar/ethereum-php",
+    "name": "JXLau/ethereum-php",
     "description": "Ethereum client library in PHP",
     "require": {
         "php": ">=7.1",

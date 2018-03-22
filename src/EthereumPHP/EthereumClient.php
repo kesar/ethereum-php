@@ -2,6 +2,7 @@
 
 namespace EthereumPHP;
 
+use EthereumPHP\Methods\Contract;
 use EthereumPHP\Methods\Eth;
 use EthereumPHP\Methods\Net;
 use EthereumPHP\Methods\Personal;
@@ -23,6 +24,7 @@ class EthereumClient
             'shh' => new Shh($this->client),
             'web3' => new Web3($this->client),
             'personal' => new Personal($this->client),
+            'contract' => new Contract($this->client),
         ];
     }
 
@@ -49,5 +51,10 @@ class EthereumClient
     public function personal(): Personal
     {
         return $this->methods['personal'];
+    }
+
+    public function contract(array $abi): Contract
+    {
+        return $this->methods['contract']->abi($abi);
     }
 }

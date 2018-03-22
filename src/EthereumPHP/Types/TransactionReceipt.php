@@ -18,7 +18,7 @@ class TransactionReceipt
     private $transactionIndex;
 
     // TODO: do it
-    public function __construct($result)
+    public function __construct($response)
     {
     	$this->blockHash = new BlockHash($response['blockHash']);
         $this->blockNumber = hexdec($response['blockNumber']);

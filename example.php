@@ -14,9 +14,22 @@ $config = [
 
 $client = new EthereumClient('http://localhost:8545', $config);
 
-$ether = new \EthereumPHP\Types\Ether(1);
-$ether2 = new \EthereumPHP\Types\Ether(1);
-echo $ether->toWei()->amount() - $ether2->toWei()->amount();
+// $ether = new \EthereumPHP\Types\Ether(1);
+// $ether2 = new \EthereumPHP\Types\Ether(1);
+// echo $ether->toWei()->amount() - $ether2->toWei()->amount() . PHP_EOL;
+
+$token = json_decode(file_get_contents('example/contract/token.json'), true);
+$abi = json_decode($token['abi'][1], true);
+
+$contract = $client->contract($abi);
+
+$contract_address = '0xa94f4bb82c3f1fd3b56d202a530c0fad0b4211f1';
+$address = '0xc3288211a1161560f1159e86e13e3a8107d10d5f';
+
+$token_balance = $contract->at($contract_address)->call('balanceOf', $address);
+
+echo $token_balance . PHP_EOL;
+
 /*
 $lastBlock = $client->eth()->blockNumber();
 for ($i = 0; $i <= $lastBlock; $i++) {

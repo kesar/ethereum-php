@@ -13,7 +13,12 @@ include 'vendor/autoload.php';
 $randomAddress = new \EthereumPHP\Types\Address('0x7eff122b94897ea5b0e2a9abf47b86337fafebdc');
 $randomHash = '0xb903239f8543d04b5dc1ba6579132b143087c68db1b2168786408fcbce568238';
 
-$client = new EthereumClient('http://localhost:8545');
+$config = [
+    // You can set any number of default request options.
+    'timeout' => 2.0 
+];
+
+$client = new EthereumClient('http://localhost:8545', $config);
 
 // net
 echo $client->net()->version() , PHP_EOL;

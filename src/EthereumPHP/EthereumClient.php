@@ -14,9 +14,9 @@ class EthereumClient
     private $client;
     private $methods = [];
 
-    public function __construct(string $url)
+    public function __construct(string $url, array $config = [])
     {
-        $this->client = Client::factory($url);
+        $this->client = Client::factory($url, $config);
         $this->methods = [
             'net' => new Net($this->client),
             'eth' => new Eth($this->client),

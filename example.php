@@ -7,7 +7,12 @@ include 'vendor/autoload.php';
 $myAddress = new \EthereumPHP\Types\Address('0x2e94757df1267f244f4b9ef049416c6794a60552');
 $otherAddress = new \EthereumPHP\Types\Address('0x22c5071a37432ac845a57c4a69339d161b6baa22');
 
-$client = new EthereumClient('http://localhost:8545');
+$config = [
+    // You can set any number of default request options.
+    'timeout' => 2.0 
+];
+
+$client = new EthereumClient('http://localhost:8545', $config);
 
 $ether = new \EthereumPHP\Types\Ether(1);
 $ether2 = new \EthereumPHP\Types\Ether(1);

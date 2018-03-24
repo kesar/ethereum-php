@@ -136,6 +136,7 @@ class Contract extends AbstractMethods
     protected function encodeFunctionSignature($function)
     {
     	$functionName = $function['name'];
+        $functionInputTypes = [];
         foreach ($function['inputs'] as $key => $p) {
         	$functionInputTypes[] = $p['type'];
         }
@@ -148,13 +149,16 @@ class Contract extends AbstractMethods
     protected function encodeParam($params)
     {
     	$ps = [];
+        if (empty($params)) {
+            $ps[] = $this->format('');
+        } else {
+            foreach ($params as $key => $value) {
+                if ((strpos($value, '0x') === 0)) {
+                    $value = str_replace('0x', '', $value);
+                }
 
-    	foreach ($params as $key => $value) {
-        	if ((strpos($value, '0x') === 0)) {
-        		$value = str_replace('0x', '', $value);
-        	}
-
-        	$ps[] = $this->format($value);
+                $ps[] = $this->format($value);
+            }
         }
 
         return implode('', $ps);

@@ -26,12 +26,14 @@ class TransactionReceipt
             $this->contractAddress = new Address($response['contractAddress']);
         }
         $this->cumulativeGasUsed = new Wei(hexdec($response['cumulativeGasUsed']));
-        $this->from = new Address($response['from']);
+        if (isset($response['from'])) {
+            $this->from = new Address($response['from']);
+        }
         $this->gasUsed = new Wei(hexdec($response['gasUsed']));
         $this->logs = $response['logs'];
         $this->logsBloom = hexdec($response['logsBloom']);
         $this->status = hexdec($response['status']);
-        if ($response['to']) {
+        if (isset($response['to'])) {
             $this->to = new Address($response['to']);
         }
         $this->transactionHash = new TransactionHash($response['transactionHash']);

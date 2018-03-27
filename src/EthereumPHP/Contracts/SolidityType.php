@@ -198,8 +198,6 @@ class SolidityType
      */
     public function encode($value, $name)
     {
-        // var_dump($value);
-        // var_dump($name);
         if ($this->isDynamicArray($name)) {
             $length = count($value);
             $nestedName = $this->nestedName($name);

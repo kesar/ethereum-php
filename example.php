@@ -1,6 +1,7 @@
 <?php
 
 use EthereumPHP\EthereumClient;
+use phpseclib\Math\BigInteger;
 
 include 'vendor/autoload.php';
 
@@ -19,16 +20,44 @@ $client = new EthereumClient('http://localhost:8545', $config);
 // echo $ether->toWei()->amount() - $ether2->toWei()->amount() . PHP_EOL;
 
 $token = json_decode(file_get_contents('example/contract/token.json'), true);
-$abi = json_decode($token['abi'][1], true);
+$abi = $token['abi'];
+$bytecode = $token['bytecode'];
 
 $contract = $client->contract($abi);
 
-$contract_address = '0xa94f4bb82c3f1fd3b56d202a530c0fad0b4211f1';
-$address = '0xc3288211a1161560f1159e86e13e3a8107d10d5f';
+// $contract_address = '0x5ea42b0bab9da966920683ad6d89d0277a88a888';
+$contract_address = '0xf531da0706f6b82da896e9bc7efbc73cbcf08a7b';
+$address = '0x7a81ff46c7543ecacc60acbb0cbd5c1fb56c0fed';
 
-$token_balance = $contract->at($contract_address)->call('balanceOf', $address);
+$tokenSupply = 1000000000;
+$tokenName = 'TEST Token';
+$tokenSymbol = 'TSTC';
+$tokenDecimals = 18;
+ 
+$sender = [
+    'from' => $address,
+    'gas' => '0x' . dechex(3000000),
+    'gasPrice' => '0x' . dechex(300000000000)
+];
 
-echo $token_balance . PHP_EOL;
+// $transactionHash = $contract->bytecode($bytecode)->new($tokenSupply, $tokenName, $tokenDecimals, $sender);
+
+// var_dump($transactionHash);
+
+// $transactionReceipt = $client->eth()->getTransactionReceipt($transactionHash);
+
+// var_dump($transactionReceipt);exit;
+
+$ret = $contract->at($contract_address)->send('mintToken', $address, 100, $sender);
+var_dump($ret);
+
+$token_balance = $contract->at($contract_address)->call('totalSupply');
+// $token_balance = $contract->at($contract_address)->call('approve', $address, 100);
+echo($token_balance);
+
+$token_balance = $contract->at($contract_address)->call('name');
+
+var_dump($token_balance);
 
 /*
 $lastBlock = $client->eth()->blockNumber();

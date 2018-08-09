@@ -6,12 +6,12 @@ class Wei
 {
     private $amount;
 
-    public function __construct(float $amount)
+    public function __construct(int $amount)
     {
         $this->amount = $amount;
     }
 
-    public function amount(): float
+    public function amount(): int
     {
         return $this->amount;
     }

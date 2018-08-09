@@ -1,5 +1,5 @@
 {
-    "name": "kesar/ethereum-php",
+    "name": "sonofliberty/ethereum-php",
     "description": "Ethereum client library in PHP",
     "require": {
         "php": ">=7.1",
@@ -11,8 +11,8 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Cesar Rodriguez",
-            "email": "kesarr+eth@gmail.com"
+            "name": "Alex Winter",
+            "email": "alex@bitcoinvn.io"
         }
     ]
 }

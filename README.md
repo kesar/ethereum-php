@@ -1,5 +1,11 @@
 # Ethereum Client in PHP
 
+### 安装
+
+composer require jx-lau/ethereum-php dev-master
+
+
+
 Examples:
 
 ```php

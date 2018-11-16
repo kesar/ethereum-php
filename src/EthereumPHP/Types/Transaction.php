@@ -60,7 +60,7 @@ class Transaction
         }
 
         if (!is_null($this->value)) {
-            $transaction['value'] = '0x'.ethereum_php_bcdechex((string) $this->value);
+            $transaction['value'] = '0x'.\Phlib\base_convert($this->value, 10, 16);
         }
 
         if (!is_null($this->nonce)) {

@@ -6,9 +6,9 @@ class Ether
 {
     private $amount;
 
-    public function __construct(string $amount)
+    public function __construct($amount)
     {
-        $this->amount = $amount;
+        $this->amount = (string)$amount;
     }
 
     public function amount(): string

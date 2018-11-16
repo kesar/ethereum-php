@@ -6,23 +6,23 @@ class Wei
 {
     private $amount;
 
-    public function __construct(int $amount)
+    public function __construct(string $amount)
     {
         $this->amount = $amount;
     }
 
-    public function amount(): int
+    public function amount(): string
     {
         return $this->amount;
     }
 
-    public function toEther(): float
+    public function toEther(): string
     {
-        return $this->amount / 1000000000000000000;
+        return bcdiv($this->amount, "1000000000000000000");
     }
 
     public function __toString()
     {
-        return (string)$this->amount;
+        return $this->amount;
     }
 }

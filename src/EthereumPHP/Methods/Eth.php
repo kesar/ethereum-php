@@ -106,7 +106,7 @@ class Eth extends AbstractMethods
             $this->client->request(1, 'eth_getBalance', [$address->toString(), $blockNumber->toString()])
         );
 
-        return new Wei(hexdec($response->getRpcResult()));
+        return new Wei(\Phlib\base_convert($response->getRpcResult(), 16, 10));
 
     }
 

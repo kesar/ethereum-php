@@ -12,13 +12,23 @@ class Transaction
     private $value;
     private $nonce;
 
+    /**
+     * Transaction constructor.
+     * @param Address $from
+     * @param Address $to
+     * @param string|null $data
+     * @param int|null $gas
+     * @param Wei|null $gasPrice
+     * @param int|string|null $value
+     * @param int|null $nonce
+     */
     public function __construct(
         Address $from,
         Address $to,
         string $data = null,
         int $gas = null,
         Wei $gasPrice = null,
-        int $value = null,
+        $value = null,
         int $nonce = null
     ) {
         $this->from = $from;
@@ -50,7 +60,7 @@ class Transaction
         }
 
         if (!is_null($this->value)) {
-            $transaction['value'] = '0x'.dechex($this->value);
+            $transaction['value'] = '0x'.\Phlib\base_convert($this->value, 10, 16);
         }
 
         if (!is_null($this->nonce)) {

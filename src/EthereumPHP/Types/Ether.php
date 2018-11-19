@@ -6,23 +6,23 @@ class Ether
 {
     private $amount;
 
-    public function __construct(float $amount)
+    public function __construct($amount)
     {
-        $this->amount = $amount;
+        $this->amount = (string)$amount;
     }
 
-    public function amount(): float
+    public function amount(): string
     {
         return $this->amount;
     }
 
     public function toWei(): Wei
     {
-        return new Wei($this->amount * 1000000000000000000);
+        return new Wei(bcmul($this->amount, "1000000000000000000"));
     }
 
     public function __toString()
     {
-        return (string)$this->amount;
+        return $this->amount;
     }
 }

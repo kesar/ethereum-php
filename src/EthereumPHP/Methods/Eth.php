@@ -146,7 +146,6 @@ class Eth extends AbstractMethods
         );
         
         return hexdec($response->getRpcResult());
-        
     }
     
     public function getBlockTransactionCountByNumber(BlockNumber $blockNumber): int
@@ -198,6 +197,12 @@ class Eth extends AbstractMethods
         return $response->getRpcResult();
     }
     
+    /**
+     * @param Transaction $transaction
+     *
+     * @return TransactionHash
+     * @throws \ErrorException
+     */
     public function sendTransaction(Transaction $transaction)
     {
         $response = $this->client->send(

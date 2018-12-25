@@ -100,16 +100,24 @@ class Eth extends AbstractMethods
         return hexdec($response->getRpcResult());
     }
     
+    /**
+     * @param Address     $address
+     * @param BlockNumber $blockNumber
+     *
+     * @return Wei
+     * @throws \ErrorException
+     */
     public function getBalance(Address $address, BlockNumber $blockNumber): Wei
     {
         $response = $this->client->send(
             $this->client->request(1, 'eth_getBalance', [$address->toString(), $blockNumber->toString()])
         );
+        
         $content = \Graze\GuzzleHttp\JsonRpc\json_decode($response->getBody()->getContents());
         if (!isset($content->error)) {
             return new Wei(hexdec($response->getRpcResult()));
         } else {
-            throw new \ErrorException($content->error);
+            throw new \ErrorException($content->error->message, $content->error->code);
         }
     }
     
@@ -328,6 +336,15 @@ class Eth extends AbstractMethods
         );
         
         return ($response->getRpcResult()) ? $response->getRpcResult() : [];
+    }
+    
+    public function debugTraceTransaction(string $hash)
+    {
+        $response = $this->client->send(
+            $this->client->request(1, 'debug_traceTransaction', [$hash])
+        );
+        
+        return $response->getBody()->getContents();
     }
     
     // TODO: missing filter methods

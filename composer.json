@@ -1,5 +1,5 @@
 {
-    "name": "Aliaxander",
+    "name": "aliaxander/ethereum-php",
     "description": "Ethereum client library in PHP",
     "minimum-stability": "dev",
     "require": {

@@ -28,7 +28,6 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_syncing', [])
         );
-        
         $result = $response->getRpcResult();
         if ($result === false) {
             return $result;
@@ -352,5 +351,32 @@ class Eth extends AbstractMethods
         return $response->getBody()->getContents();
     }
     
-    // TODO: missing filter methods
+    public function newFilter(array $params)
+    {
+        $response = $this->client->send(
+            $this->client->request(1, 'eth_newFilter', $params)
+        );
+        
+        return $response->getRpcResult();
+    }
+    
+    public function getFilterChanges(string $filterId)
+    {
+        $response = $this->client->send(
+            $this->client->request(1, 'eth_getFilterChanges', [$filterId])
+        );
+        print_r($response->getBody()->getContents());
+        
+        return $response->getRpcResult();
+    }
+    
+    public function getLogs(array $params)
+    {
+        $response = $this->client->send(
+            $this->client->request(1, 'eth_getLogs', $params)
+        );
+        print_r($response->getBody()->getContents());
+        
+        return $response->getRpcResult();
+    }
 }

@@ -10,7 +10,9 @@ use EthereumPHP\Types\Transaction;
 use EthereumPHP\Types\TransactionHash;
 
 /**
- * 以太坊模型
+ * Class Ethereum
+ *
+ * @package EthereumPHP
  */
 class Ethereum
 {

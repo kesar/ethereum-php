@@ -18,7 +18,7 @@ class TransactionInfo
     private $v;
     private $r;
     private $s;
-
+    
     public function __construct(array $response)
     {
         $this->blockHash = new BlockHash($response['blockHash']);
@@ -38,72 +38,72 @@ class TransactionInfo
         $this->r = $response['r'];
         $this->s = $response['s'];
     }
-
+    
     public function blockHash(): BlockHash
     {
         return $this->blockHash;
     }
-
+    
     public function blockNumber(): int
     {
         return $this->blockNumber;
     }
-
+    
     public function from(): Address
     {
         return $this->from;
     }
-
+    
     public function to(): ?Address
     {
         return $this->to;
     }
-
+    
     public function gas(): int
     {
         return $this->gas;
     }
-
+    
     public function gasPrice(): Wei
     {
         return $this->gasPrice;
     }
-
+    
     public function hash(): TransactionHash
     {
         return $this->hash;
     }
-
+    
     public function input(): string
     {
         return $this->input;
     }
-
+    
     public function nonce(): int
     {
         return $this->nonce;
     }
-
+    
     public function transactionIndex(): int
     {
         return $this->transactionIndex;
     }
-
+    
     public function value(): Wei
     {
         return $this->value;
     }
-
+    
     public function v(): string
     {
         return $this->v;
     }
-
+    
     public function r(): string
     {
         return $this->r;
     }
-
+    
     public function s(): string
     {
         return $this->s;

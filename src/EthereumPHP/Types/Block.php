@@ -24,7 +24,7 @@ class Block
     private $transactionsRoot;
     private $transactions;
     private $uncles;
-
+    
     public function __construct(array $response)
     {
         $this->difficulty = hexdec($response['difficulty']);
@@ -54,102 +54,102 @@ class Block
             $this->uncles[] = new BlockHash($uncle);
         }
     }
-
+    
     public function difficulty(): float
     {
         return $this->difficulty;
     }
-
+    
     public function extraData(): string
     {
         return $this->extraData;
     }
-
+    
     public function gasLimit(): int
     {
         return $this->gasLimit;
     }
-
+    
     public function gasUsed(): Wei
     {
         return $this->gasUsed;
     }
-
+    
     public function hash(): BlockHash
     {
         return $this->hash;
     }
-
+    
     public function logsBloom(): string
     {
         return $this->logsBloom;
     }
-
+    
     public function miner(): Address
     {
         return $this->miner;
     }
-
+    
     public function mixHash(): Hash
     {
         return $this->mixHash;
     }
-
+    
     public function nonce(): string
     {
         return $this->nonce;
     }
-
+    
     public function number(): int
     {
         return $this->number;
     }
-
+    
     public function parentHash(): BlockHash
     {
         return $this->parentHash;
     }
-
+    
     public function receiptsRoot(): Hash
     {
         return $this->receiptsRoot;
     }
-
+    
     public function sha3Uncles(): Hash
     {
         return $this->sha3Uncles;
     }
-
+    
     public function size(): int
     {
         return $this->size;
     }
-
+    
     public function stateRoot(): Hash
     {
         return $this->stateRoot;
     }
-
+    
     public function timestamp(): int
     {
         return $this->timestamp;
     }
-
+    
     public function totalDifficulty(): float
     {
         return $this->totalDifficulty;
     }
-
+    
     public function transactionsRoot(): TransactionHash
     {
         return $this->transactionsRoot;
     }
-
+    
     public function transactions(): array
     {
         return $this->transactions;
     }
-
+    
     public function uncles(): array
     {
         return $this->uncles;

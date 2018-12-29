@@ -1,21 +1,23 @@
 {
-    "name": "aliaxander/ethereum-php",
-    "description": "Ethereum client library in PHP",
-    "minimum-stability": "dev",
-    "require": {
-        "php": ">=7.1",
-        "graze/guzzle-jsonrpc": "^3.2",
-        "kornrunner/keccak": "dev-master",
-        "phpseclib/phpseclib": "dev-master"
-    },
-    "autoload": {
-        "psr-4": {"": "src/"}
-    },
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Cesar Rodriguez",
-            "email": "cesar@lightstreams.io"
-        }
-    ]
+  "name": "aliaxander/ethereum-php",
+  "description": "Ethereum client library in PHP",
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=7.1",
+    "graze/guzzle-jsonrpc": "^3.2",
+    "kornrunner/keccak": "dev-master",
+    "phpseclib/phpseclib": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "": "src/"
+    }
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Cesar Rodriguez",
+      "email": "cesar@lightstreams.io"
+    }
+  ]
 }

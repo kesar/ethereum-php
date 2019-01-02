@@ -33,14 +33,14 @@ echo $total . '<br>';
 
 $value = 100; //Transfer out MKC
 
-$from_address = '0x04091bdd5808b83229ab80fc06f2d7ef977d9e8e'; //转出账号
+$from_address = '0x04091bdd5808b83229ab80fc06f2d7ef977d9e8e'; //Transfer account
 $to_address = '';
 
 
-$balance = $ethereum->getTokenBalance($from_address);//获取用户token
+$balance = $ethereum->getTokenBalance($from_address);//Get user token
 
 //Transfer out to unlock the account first
-$ethereum->unlockAccount($from_address, '密码', 1000);
+$ethereum->unlockAccount($from_address, 'password', 1000);
 
 
 $options = [

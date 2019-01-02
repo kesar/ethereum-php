@@ -269,6 +269,8 @@ class Eth extends AbstractMethods
             $this->client->request(1, 'eth_getTransactionByHash', [$hash->toString()])
         );
         
+        //        print_r($response->getBody()->getContents());
+        
         return ($response->getRpcResult()) ? new TransactionInfo($response->getRpcResult()) : null;
     }
     
@@ -365,7 +367,8 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_getFilterChanges', [$filterId])
         );
-        print_r($response->getBody()->getContents());
+        
+        // print_r($response->getBody()->getContents());
         
         return $response->getRpcResult();
     }
@@ -375,7 +378,8 @@ class Eth extends AbstractMethods
         $response = $this->client->send(
             $this->client->request(1, 'eth_getLogs', $params)
         );
-        print_r($response->getBody()->getContents());
+        
+        //print_r($response->getBody()->getContents());
         
         return $response->getRpcResult();
     }

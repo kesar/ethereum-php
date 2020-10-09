@@ -219,7 +219,7 @@ class Eth extends AbstractMethods
     public function estimateGas(Transaction $transaction, BlockNumber $blockNumber): int
     {
         $response = $this->client->send(
-            $this->client->request(1, 'eth_estimateGas', [$transaction->toArray(), $blockNumber->toString()])
+            $this->client->request(1, 'eth_estimateGas', [$transaction->toArray()])
         );
 
         return hexdec($response->getRpcResult());
